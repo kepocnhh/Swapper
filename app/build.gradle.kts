@@ -1,3 +1,6 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.compose.desktop.application.tasks.AbstractJPackageTask
+
 repositories {
     google()
     mavenCentral()
@@ -16,12 +19,18 @@ kotlin {
 
     sourceSets {
         create("sharedMain") {
+            // todo mock debug
+            // todo real debug
+            // todo real release
             kotlin.srcDirs("src/shared/main/kotlin")
             dependencies {
                 implementation(compose.foundation)
             }
         }
         getByName("androidMain") {
+            // todo mock debug
+            // todo real debug
+            // todo real release
             dependsOn(getByName("sharedMain"))
             kotlin.srcDirs("src/android/main/kotlin")
             dependencies {
@@ -29,6 +38,8 @@ kotlin {
             }
         }
         getByName("desktopMain") {
+            // todo macos_arm64
+            // todo windows_x64
             dependsOn(getByName("sharedMain"))
             kotlin.srcDirs("src/desktop/main/kotlin")
             dependencies {
@@ -63,6 +74,10 @@ android {
 compose.desktop {
     application {
         mainClass = "org.kepocnhh.swapper.AppKt" // todo common namespace
-        nativeDistributions.packageName = rootProject.name
+
+        nativeDistributions {
+            packageName = rootProject.name
+            targetFormats(TargetFormat.Dmg, TargetFormat.Exe)
+        }
     }
 }
