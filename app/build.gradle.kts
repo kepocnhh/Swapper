@@ -1,5 +1,4 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.compose.desktop.application.tasks.AbstractJPackageTask
 
 repositories {
     google()
@@ -35,6 +34,7 @@ kotlin {
             kotlin.srcDirs("src/android/main/kotlin")
             dependencies {
                 implementation(compose.foundation)
+                implementation("androidx.activity:activity-compose:1.12.2")
             }
         }
         getByName("desktopMain") {
@@ -68,6 +68,11 @@ android {
             isMinifyEnabled = false
             isShrinkResources = false
         }
+    }
+
+    sourceSets.getByName("main") {
+        res.srcDirs("src/android/$name/res")
+        manifest.srcFile("src/android/$name/AndroidManifest.xml")
     }
 }
 
