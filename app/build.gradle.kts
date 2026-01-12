@@ -15,23 +15,17 @@ kotlin {
     jvm("desktop")
 
     sourceSets {
-        create("appMain") {
+        create("sharedMain") {
+            kotlin.srcDirs("src/shared/main/kotlin")
             dependencies {
                 implementation(compose.foundation)
             }
         }
         getByName("androidMain") {
-            dependsOn(getByName("appMain"))
+            dependsOn(getByName("sharedMain"))
             kotlin.srcDirs("src/android/main/kotlin")
             dependencies {
                 implementation(compose.foundation)
-            }
-        }
-        getByName("desktopMain") {
-            dependsOn(getByName("appMain"))
-            kotlin.srcDirs("src/desktop/kotlin")
-            dependencies {
-                implementation(compose.desktop.currentOs)
             }
         }
     }
