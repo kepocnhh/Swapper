@@ -1,3 +1,3 @@
 rootProject.name = "Swapper"
 
-include("android")
+include("android", "desktop")
