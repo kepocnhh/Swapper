@@ -1,6 +1,7 @@
 /*
-!/app
+!/android
 !/buildSrc
+!/shared
 !.gitignore
 !build.gradle.kts
 !gradle.properties
