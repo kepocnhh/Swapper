@@ -7,4 +7,8 @@ internal class App : Application() {
         super.onCreate()
         // todo
     }
+
+    companion object {
+        // todo
+    }
 }

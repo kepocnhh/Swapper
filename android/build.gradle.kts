@@ -27,10 +27,37 @@ android {
 
     buildTypes {
         getByName("debug") {
+            sourceSets.getByName(name) {
+                kotlin.srcDirs("../shared/src/$name/kotlin")
+            }
             applicationIdSuffix = ".$name"
             versionNameSuffix = "-$name"
             isMinifyEnabled = false
             isShrinkResources = false
+        }
+    }
+
+    sourceSets.getByName("main") {
+        kotlin.srcDirs("../shared/src/$name/kotlin")
+    }
+
+    productFlavors {
+        "specifics".also { dimension ->
+            flavorDimensions += dimension
+            create("real") {
+                this.dimension = dimension
+                sourceSets.getByName(name) {
+                    kotlin.srcDirs("../shared/src/$name/kotlin")
+                }
+            }
+            create("mock") {
+                this.dimension = dimension
+                sourceSets.getByName(name) {
+                    kotlin.srcDirs("../shared/src/$name/kotlin")
+                }
+                this.applicationIdSuffix = ".$name"
+                this.versionNameSuffix = "-$name"
+            }
         }
     }
 
