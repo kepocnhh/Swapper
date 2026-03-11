@@ -13,6 +13,6 @@ buildscript {
     }
 }
 
-task<Delete>("clean") {
+tasks.register<Delete>("clean") {
     delete = setOf(buildDir(), buildSrc.buildDir())
 }

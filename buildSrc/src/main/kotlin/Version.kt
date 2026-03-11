@@ -1,4 +1,5 @@
 object Version {
+    const val compose = "1.9.3"
     const val jvmTarget = "17"
     const val kotlin = "2.2.21"
 

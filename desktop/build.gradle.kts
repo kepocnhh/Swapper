@@ -9,7 +9,7 @@ repositories {
 
 plugins {
     kotlin("jvm")
-    id("org.jetbrains.compose") version "1.9.3"
+    id("org.jetbrains.compose") version Version.compose
     id("org.jetbrains.kotlin.plugin.compose") version Version.kotlin
 }
 
@@ -24,10 +24,10 @@ val flavors: Map<String, String> = mapOf(
 
 sourceSets {
     getByName("main") {
-        kotlin.srcDirs("../shared/$name/kotlin")
+        kotlin.srcDirs("../shared/src/$name/kotlin")
         flavors.forEach { (_, name) ->
             kotlin.srcDirs("src/$name/kotlin")
-            kotlin.srcDirs("../shared/$name/kotlin")
+            kotlin.srcDirs("../shared/src/$name/kotlin")
         }
     }
 }
